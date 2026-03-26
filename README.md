@@ -1,8 +1,8 @@
-# 🌍 Projeto de Monitoramento de Qualidade Ambiental (Padrão Senior Data Scientist)
+#  Projeto de Monitoramento de Qualidade Ambiental (Padrão Senior Data Scientist)
 
 Este projeto é um sistema completo de Machine Learning para classificação de qualidade ambiental, estruturado como um pipeline automatizado seguindo as práticas de MLOps e o modelo CRISP-DM. Ele foi refatorado para seguir padrões de engenharia de dados e ciência de dados de nível sênior.
 
-## 🛠️ Tecnologias Utilizadas
+##  Tecnologias Utilizadas
 - **Python** (Linguagem principal)
 - **Optuna** (Otimização de hiperparâmetros com busca expandida)
 - **LazyPredict** (Benchmark inicial de modelos com ranking visual)
@@ -13,7 +13,7 @@ Este projeto é um sistema completo de Machine Learning para classificação de 
 - **Scikit-learn** (Pipeline, Validação Cruzada Estratificada e Modelos)
 - **Imbalanced-learn** (SMOTE k=3 para balanceamento robusto)
 
-## 📂 Estrutura do Projeto
+##  Estrutura do Projeto
 ```
 ├── data/               # Dataset bruto
 ├── models/             # Modelos, transformadores e feature_names salvos
@@ -30,7 +30,7 @@ Este projeto é um sistema completo de Machine Learning para classificação de 
 └── Dockerfile          # Configuração do container para deploy
 ```
 
-## 🚀 Como Executar
+##  Como Executar
 
 ### 1. Instalação Local
 ```bash
@@ -60,7 +60,7 @@ docker build -t ambiental-ml .
 docker run -p 8501:8501 ambiental-ml
 ```
 
-## 📊 Diferenciais Implementados
+##  Diferenciais Implementados
 - **Limpeza Inteligente:** Remoção automática de colunas constantes, alta cardinalidade e redundantes (correlação > 0.95).
 - **No Data Leakage:** Separação rigorosa entre treino e teste; Imputer e Scaler fitados apenas no treino.
 - **Métricas Macro:** Foco no desempenho real em todas as classes, não apenas na majoritária.
