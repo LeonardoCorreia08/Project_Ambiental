@@ -1,9 +1,10 @@
 #  ML Pipeline: Classificação de Qualidade Ambiental
 
-Este projeto implementa um sistema completo de **Machine Learning** para monitoramento e classificação da qualidade ambiental. Através da análise de poluentes gasosos e variáveis atmosféricas, o modelo é capaz de categorizar o estado do ambiente em 5 níveis, desde "Excelente" até "Muito Ruim".
+Este projeto implementa um sistema completo de **Machine Learning** para monitoramento e classificação da qualidade ambiental. Através da análise de poluentes gasosos e variáveis atmosféricas, o modelo categoriza o estado do ambiente em 5 níveis, desde "Excelente" até "Muito Ruim".
+
+![Dashboard Final de Treinamento e Avaliação](reports/figures/training_dashboard.png)
 
 O projeto foi estruturado seguindo a metodologia **CRISP-DM** e utiliza práticas modernas de **MLOps** para garantir escalabilidade e reprodutibilidade.
-
 ---
 
 ##  Stack Tecnológica e Ferramentas
@@ -21,6 +22,8 @@ O projeto utiliza um ecossistema moderno voltado para a escalabilidade, reprodut
 * **Optuna**: Framework de otimização bayesiana para busca refinada de hiperparâmetros (HPT).
 * **LazyPredict**: Benchmarking acelerado para ranking visual e seleção inicial de algoritmos competitivos.
 
+![Ranking LazyPredict](reports/figures/lazypredict_ranking.png)
+
 ### **Engenharia de Dados e Interface**
 * **Streamlit**: Dashboard interativo para visualização de métricas em tempo real e interface de inferência para novas predições.
 * **ydata-profiling**: Geração automatizada de relatórios detalhados de Análise Exploratória de Dados (EDA).
@@ -33,7 +36,28 @@ O projeto utiliza um ecossistema moderno voltado para a escalabilidade, reprodut
 
 ##  Metodologia: CRISP-DM
 
-Este projeto não é apenas um script de treinamento, mas uma implementação estruturada seguindo o padrão da indústria:
+### 1. Entendimento e Exploração dos Dados (EDA)
+Análise profunda das variáveis para identificar padrões, anomalias e a distribuição do target.
+
+![Dashboard EDA](reports/figures/eda_dashboard.png)
+
+* **Mapa de Nulos:** Identificação de dados faltantes para tratamento via Imputer.
+* **Distribuições:** Análise de densidade (KDE) e histogramas das variáveis climáticas e poluentes.
+
+![Mapa de Nulos](reports/figures/mapa_nulos.png)
+
+### 2. Preparação de Dados
+* **Limpeza:** Remoção de redundâncias e colunas constantes.
+* **Balanceamento:** Aplicação de SMOTE para mitigar o desequilíbrio severo (originalmente 0.1% para a classe "Excelente").
+
+![Efeito do SMOTE](reports/figures/smote_balanceamento.png)
+
+### 3. Modelagem e Otimização
+Tunagem refinada do modelo Random Forest utilizando busca bayesiana.
+
+![Resultados Optuna](reports/figures/optuna_resultados.png)
+
+---
 
 1.  **Entendimento do Negócio:** Classificação da qualidade ambiental baseada em sensores de gases e sensores climáticos.
 2.  **Entendimento dos Dados:** EDA expandida com foco em correlações entre poluentes.
@@ -50,8 +74,10 @@ O modelo utiliza dados de sensores que medem:
 * **Poluentes (Gases):** $CO_2$, $CO$, $NO_2$, $SO_2$ e $O_3$.
 * **Condições Climáticas:** Temperatura, Umidade e Pressão Atmosférica.
 
-> **Insight:** De acordo com a importância das features, os gases **$CO_2$** e **$O_3$** são os principais preditores da qualidade ambiental neste dataset.
+> **Insight:** Os poluentes **$CO_2$** e **$O_3$** são os principais preditores da qualidade ambiental, apresentando maior importância de Gini no modelo final.
 
+![Importância das Features](reports/figures/feature_importance.png)
+![Distribuição por Classe](reports/figures/boxplots_classes.png)
 ---
 
 ##  Resultados e Performance
@@ -64,6 +90,8 @@ O modelo final (**Random Forest**) apresentou os seguintes resultados no conjunt
 | **F1-Score (Macro)** | 0.6602 |
 | **Recall (Macro)** | 0.6746 |
 | **Precision (Macro)** | 0.6492 |
+
+![Matriz de Confusão](reports/figures/confusion_matrix.png)
 
 ### Destaques do Pipeline:
 * **Otimização:** Foram realizados 50 trials no Optuna, alcançando estabilidade de convergência rápida.
