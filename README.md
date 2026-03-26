@@ -1,6 +1,6 @@
-#  Projeto de Monitoramento de Qualidade Ambiental (Padrão Senior Data Scientist)
+#  Projeto de Monitoramento de Qualidade Ambiental 
 
-Este projeto é um sistema completo de Machine Learning para classificação de qualidade ambiental, estruturado como um pipeline automatizado seguindo as práticas de MLOps e o modelo CRISP-DM. Ele foi refatorado para seguir padrões de engenharia de dados e ciência de dados de nível sênior.
+Este projeto é um sistema completo de Machine Learning para classificação de qualidade ambiental, estruturado como um pipeline automatizado seguindo as práticas de MLOps e o modelo CRISP-DM. 
 
 ##  Tecnologias Utilizadas
 - **Python** (Linguagem principal)
