@@ -1,17 +1,83 @@
-#  Projeto de Monitoramento de Qualidade Ambiental 
+#  ML Pipeline: Classificação de Qualidade Ambiental
 
-Este projeto é um sistema completo de Machine Learning para classificação de qualidade ambiental, estruturado como um pipeline automatizado seguindo as práticas de MLOps e o modelo CRISP-DM. 
+Este projeto implementa um sistema completo de **Machine Learning** para monitoramento e classificação da qualidade ambiental. Através da análise de poluentes gasosos e variáveis atmosféricas, o modelo é capaz de categorizar o estado do ambiente em 5 níveis, desde "Excelente" até "Muito Ruim".
 
-##  Tecnologias Utilizadas
-- **Python** (Linguagem principal)
-- **Optuna** (Otimização de hiperparâmetros com busca expandida)
-- **LazyPredict** (Benchmark inicial de modelos com ranking visual)
-- **MLflow** (Rastreamento de experimentos com backend SQLite)
-- **Streamlit** (Interface web com dashboard e inferência)
-- **Docker** (Containerização completa)
-- **ydata-profiling** (EDA automática expandida com gráficos customizados)
-- **Scikit-learn** (Pipeline, Validação Cruzada Estratificada e Modelos)
-- **Imbalanced-learn** (SMOTE k=3 para balanceamento robusto)
+O projeto foi estruturado seguindo a metodologia **CRISP-DM** e utiliza práticas modernas de **MLOps** para garantir escalabilidade e reprodutibilidade.
+
+---
+
+##  Stack Tecnológica e Ferramentas
+
+O projeto utiliza um ecossistema moderno voltado para a escalabilidade, reprodutibilidade e governança do ciclo de vida de Machine Learning (MLOps).
+
+### **Core & Machine Learning**
+* **Python 3.x**: Linguagem base para o desenvolvimento do pipeline.
+* **Scikit-learn**: Implementação de Pipelines, Validação Cruzada Estratificada ($k=5$) e modelos de classificação.
+* **XGBoost**: Algoritmo de Gradient Boosting de alta performance para dados tabulares.
+* **Imbalanced-learn (SMOTE)**: Balanceamento robusto de classes com técnica de oversampling sintético ($k=3$).
+
+### **MLOps & Governança de Experimentos**
+* **MLflow**: Gerenciamento completo do ciclo de vida de ML, com rastreamento de parâmetros, métricas e versionamento de artefatos (backend SQLite).
+* **Optuna**: Framework de otimização bayesiana para busca refinada de hiperparâmetros (HPT).
+* **LazyPredict**: Benchmarking acelerado para ranking visual e seleção inicial de algoritmos competitivos.
+
+### **Engenharia de Dados e Interface**
+* **Streamlit**: Dashboard interativo para visualização de métricas em tempo real e interface de inferência para novas predições.
+* **ydata-profiling**: Geração automatizada de relatórios detalhados de Análise Exploratória de Dados (EDA).
+* **Matplotlib & Seaborn**: Bibliotecas para visualizações estatísticas e gráficos customizados de importância de features.
+
+### **Infraestrutura e Portabilidade**
+* **Docker**: Containerização completa da aplicação, garantindo paridade de ambiente entre desenvolvimento e produção.
+
+---
+
+##  Metodologia: CRISP-DM
+
+Este projeto não é apenas um script de treinamento, mas uma implementação estruturada seguindo o padrão da indústria:
+
+1.  **Entendimento do Negócio:** Classificação da qualidade ambiental baseada em sensores de gases e sensores climáticos.
+2.  **Entendimento dos Dados:** EDA expandida com foco em correlações entre poluentes.
+3.  **Preparação de Dados:** Tratamento de outliers, normalização e balanceamento de classes minoritárias.
+4.  **Modelagem:** Otimização de hiperparâmetros e validação cruzada para garantir generalização.
+5.  **Avaliação:** Análise técnica via F1-Score (macro) para medir o desempenho em todas as classes equitativamente.
+6.  **Deployment:** Empacotamento via Docker e disponibilização de interface via Streamlit.
+
+---
+
+##  Variáveis do Modelo (Features)
+
+O modelo utiliza dados de sensores que medem:
+* **Poluentes (Gases):** $CO_2$, $CO$, $NO_2$, $SO_2$ e $O_3$.
+* **Condições Climáticas:** Temperatura, Umidade e Pressão Atmosférica.
+
+> **Insight:** De acordo com a importância das features, os gases **$CO_2$** e **$O_3$** são os principais preditores da qualidade ambiental neste dataset.
+
+---
+
+##  Resultados e Performance
+
+O modelo final (**Random Forest**) apresentou os seguintes resultados no conjunto de teste:
+
+| Métrica | Valor |
+| :--- | :--- |
+| **Acurácia** | 92.25% |
+| **F1-Score (Macro)** | 0.6602 |
+| **Recall (Macro)** | 0.6746 |
+| **Precision (Macro)** | 0.6492 |
+
+### Destaques do Pipeline:
+* **Otimização:** Foram realizados 50 trials no Optuna, alcançando estabilidade de convergência rápida.
+* **Balanceamento:** O uso de SMOTE permitiu que o modelo aprendesse classes críticas que originalmente possuíam baixa representatividade.
+
+---
+
+##  Estrutura de Artefatos
+Os seguintes componentes são gerados automaticamente pelo pipeline:
+* `modelo_rf.joblib`: Modelo treinado e pronto para inferência.
+* `pipeline_preproc.joblib`: Transformadores de dados (Scalers/Encoders).
+* `resumo_experimento.txt`: Logs detalhados da execução.
+
+---
 
 ##  Estrutura do Projeto
 ```
