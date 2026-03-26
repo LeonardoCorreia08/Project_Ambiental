@@ -59,6 +59,10 @@ streamlit run app/app.py
 docker build -t ambiental-ml .
 docker run -p 8501:8501 ambiental-ml
 ```
+### windosws
+```bash
+QUICK-START-Windows.bat (como admin e docker  instalado)
+```
 
 ##  Diferenciais Implementados
 - **Limpeza Inteligente:** Remoção automática de colunas constantes, alta cardinalidade e redundantes (correlação > 0.95).
