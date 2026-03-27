@@ -147,6 +147,10 @@ mlflow ui --backend-store-uri sqlite:///mlflow.db
 ```bash
 streamlit run app/app.py
 ```
+Você pode acessar a aplicação rodando no Hugging Face Spaces através do link abaixo:
+
+[Visualizar Projeto Ambiental](https://huggingface.co/spaces/leonardocorreia08/Project_Ambiental)
+
 
 ### 5. Docker
 ```bash
